@@ -12,8 +12,10 @@ static int queueTail = 0;
 
 // documenting this trick for whenever I need to:
 // create an in memory queue and have its push functionality wrap to the
-// beginning of its memory when maxxed out seems like a pretty common thing for
-// a queue to do. and a fantastic way of managing the memory of that queue.
+// beginning of its memory when maxxed out.
+//
+// seems like a pretty common thing for a queue to do.
+// and a fantastic way of managing the memory of that queue.
 
 void init_queue(void) {
   memset(queue, 0, sizeof(queue));
