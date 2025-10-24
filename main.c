@@ -28,7 +28,7 @@ int push_queue(int v) {
   // difference between queueHead and queueTail must not be greater than the
   // possible queue size the actual value of queueHead or tail could be any
   // number greater than 256. keeps increasing each read. possible head and tail
-  // tracking ints overflow at 2 billion queue items :)
+  // tracking ints overflow at 2 billion items :)
 
   if ((queueHead - queueTail) >= MAX_QUEUE_SIZE) {
     return 0; // queue overflow
@@ -38,7 +38,7 @@ int push_queue(int v) {
   // 	bitwise AND speed/safety trick -----------
   queue[queueHead & MASK_QUEUE] = v;
   //
-  //	bitwise AND is used here to index the next element in the queue
+
   //	regardles of the value of queue head.
   //	it will index to the beginning of the queue on each overflow.
   //
@@ -47,13 +47,13 @@ int push_queue(int v) {
   //	overflow. but instead, the mask returns the first index again)
   //
   //	*257*
-  //	queueHead  = 0000 0001 1111 1111
+  //	queueHead  = 0000 0001 1000 0001 
   //
   //	*255*
   //    MASK_QUEUE = 0000 0000 1111 1111
   //
-  //    *257 & 255*
-  //    i          = 0000 0000 0000 0000	*resulting index is 0, the start of the array :) *
+  //   	*257 & 255*
+  //    MASK_QUEUE = 0000 0000 1111 1111
   //
   //    ----------------------------------------
   //	----------------------------------------
@@ -98,6 +98,7 @@ int pop_queue(int *out) {
 }
 
 int main(void) {
+
   init_queue();
    
   for (int k = 0; k < 257; k++) {
@@ -116,5 +117,6 @@ int main(void) {
     } else { printf("empty queue index: %d \n", queueTail & MASK_QUEUE); }
   }
 
+  printf("bit shifting \n");
   return 0;
 }
