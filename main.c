@@ -40,11 +40,11 @@ int push_queue(int v) {
   //
   //	bitwise AND is used here to index the next element in the queue
   //	regardles of the value of queue head.
-  //	it will index to the beginning of the queue neatly around on each overflow.
+  //	it will index to the beginning of the queue on each overflow.
   //
   //    ----------------------------------------
   //	(257 is one more than the size of the queue and would usually cause an
-  //	overflow)
+  //	overflow. but instead, the mask returns the first index again)
   //
   //	*257*
   //	queueHead  = 0000 0001 1111 1111
@@ -112,7 +112,6 @@ int main(void) {
   for (int i = 0; i < 257; i++) {
     if (pop_queue(&queue_item)) {
       printf("index %d -> value %d\n",
-      //remember to -1 to index. popping moves tail index to next element.
       (queueTail - 1) & MASK_QUEUE, queue_item); 
     } else { printf("empty queue index: %d \n", queueTail & MASK_QUEUE); }
   }
