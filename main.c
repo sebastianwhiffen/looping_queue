@@ -47,7 +47,7 @@ int push_queue(int v) {
   //	overflow. but instead, the mask returns the first index again)
   //
   //	*257*
-  //	queueHead  = 0000 0001 1000 0001 
+  //	queueHead  = 0000 0001 0000 0001 
   //
   //	*255*
   //    MASK_QUEUE = 0000 0000 1111 1111
